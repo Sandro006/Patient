@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
+                             https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         version="6.0">
+
+    <context-param>
+        <param-name>package-to-scan</param-name>
+        <param-value>controller</param-value>
+    </context-param>
+
+    <!--
+        Mode des contrôleurs :
+          true  (défaut) = une seule instance par contrôleur (singleton)
+          false          = une nouvelle instance à chaque requête (prototype)
+        Un contrôleur qui déclare un champ CustomSession reste toujours
+        instancié par requête pour éviter le partage d'état entre utilisateurs.
+    -->
+    <context-param>
+        <param-name>controllers.singleton</param-name>
+        <param-value>true</param-value>
+    </context-param>
+
+    <!-- Sprint DB : générique JDBC, testé MySQL -->
+    <context-param>
+        <param-name>db.driver</param-name>
+        <param-value>com.mysql.cj.jdbc.Driver</param-value>
+    </context-param>
+    <context-param>
+        <param-name>db.url</param-name>
+        <param-value>jdbc:mysql://localhost:3306/extra_patient?useSSL=false&amp;serverTimezone=UTC</param-value>
+    </context-param>
+    <context-param>
+        <param-name>db.user</param-name>
+        <param-value>root</param-value>
+    </context-param>
+    <context-param>
+        <param-name>db.password</param-name>
+        <param-value></param-value>
+    </context-param>
+
+</web-app>
